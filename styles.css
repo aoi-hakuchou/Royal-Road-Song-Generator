@@ -279,7 +279,8 @@ body::after {
   position: static;
   top: 0;
 
-  width: 220px;
+  flex-shrink: 0;
+  width: clamp(160px, 18vw, 220px);
   
   display: flex;
   flex-direction: column;
@@ -376,7 +377,9 @@ body::after {
 
 #videoContainer {
   max-width: 1080px;
-  width: 90%;
+  flex: 1;         
+  min-width: 0;      
+  width: auto;
   margin: 0 auto;
 }
 
@@ -444,7 +447,10 @@ body::after {
 #historyPanel {
   position: static;
   top: 0;
-  width: 250px;
+  flex-shrink: 0;
+  width: clamp(180px, 20vw, 250px);
+  height: auto;          /* drop the fixed 470px height too */
+  max-height: 470px;
   height: 470px;
   padding: 10px;
   
@@ -480,6 +486,7 @@ body::after {
   display: flex;
   align-items: flex-start;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .history-item {
@@ -556,13 +563,13 @@ a:visited {
   color: #b388ff;
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 900px) {
   #historyPanel {
     position: static;
     transform: none;
     margin: 0 auto 20px auto;
     width: 90%;
-    height: auto;
+    max-height: 300px;
   }
 
   #musicPanel {
